@@ -5,14 +5,21 @@ app.directive('timer', ['LocalStorageService', '$interval', function (ls, $inter
         restrict: 'E',
         templateUrl: 'src/views/partials/timer.html',
         scope: {
-            interval: '='
+            interval: '@',
+            name: '@'
         },
-        link: function (scope, element, attrs) {
+        link: function (scope) {
+            var timerName = 'timer.' + scope.name;
             scope.value = 0;
+
+            if (ls.isSet(timerName)) {
+                scope.value = ls.getItem(timerName);
+            }
+
             $interval(
                 function () {
                     scope.value++;
-                    scope.$emit('timer.tick');
+                    ls.setItem(timerName, scope.value);
                 },
                 scope.interval
             );
