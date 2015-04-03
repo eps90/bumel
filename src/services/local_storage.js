@@ -12,13 +12,13 @@ app.factory('LocalStorageService', ['$window', function ($window) {
             return this.getItem(key) !== null;
         },
         appendTo: function (key, value) {
-            if (!$window.localStorage.getItem(key)) {
-                if (typeof value === "object") {
-                    this.setItem(key, {});
-                } else if (Array.isArray && Array.isArray(value)) {
-                    this.setItem(key, []);
-                }
+            var currentValue = [];
+            if ($window.localStorage.getItem(key)) {
+                currentValue = this.getItem(key);
             }
+
+            currentValue.push(value);
+            this.setItem(key, currentValue);
         },
         remove: function (key) {
             $window.localStorage.removeItem(key);
