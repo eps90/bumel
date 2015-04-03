@@ -14,6 +14,7 @@ app.directive('panel', ['LocalStorageService', function (ls) {
         },
         controller: function ($scope) {
             $scope.taskName = '';
+            $scope.running = false;
             $scope.timer = null;
             this.setTimer = function(timer) {
                 $scope.timer = timer;
@@ -28,6 +29,7 @@ app.directive('panel', ['LocalStorageService', function (ls) {
                 ls.setItem(name + '.name', $scope.taskName);
 
                 $scope.timer.startTimer(name);
+                $scope.running = true;
             };
         }
     }
