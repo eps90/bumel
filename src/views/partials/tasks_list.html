@@ -1,0 +1,10 @@
+<md-list>
+    <md-list-item ng-repeat="task in tasksCompleted" class="task-item">
+        <div>
+            <strong>
+                <i class="fa fa-bars"></i> {{ task.name }}
+            </strong>
+            (Time spent: {{ task.time | realTime }})
+        </div>
+    </md-list-item>
+</md-list>

@@ -36,7 +36,15 @@ app.directive('timer', ['LocalStorageService', '$interval', function (ls, $inter
             $scope.stopTimer = function () {
                 $interval.cancel($scope.status);
                 $scope.running = false;
-                ls.remove('currentTask');
+
+                var currentTask = ls.getItem('currentTask');
+                var taskObj = {
+                    name: ls.getItem(currentTask + '.name'),
+                    time: ls.getItem(currentTask + '.timer')
+                };
+
+                ls.appendTo('tasks.completed', taskObj);
+                $scope.$emit('timer.stop');
             };
         }
     }

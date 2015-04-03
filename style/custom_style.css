@@ -7,3 +7,7 @@ timer span.timer-value {
     font-weight: bold;
     padding: 15px;
 }
+
+.task-item {
+    padding: 16px;
+}
