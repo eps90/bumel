@@ -5,4 +5,5 @@ md-icon.button {
 timer span.timer-value {
     font-size: 18px;
     font-weight: bold;
+    padding: 15px;
 }

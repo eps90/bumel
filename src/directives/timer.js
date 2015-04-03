@@ -29,7 +29,13 @@ app.directive('timer', ['LocalStorageService', '$interval', function (ls, $inter
                     },
                     $scope.interval
                 );
-            }
+            };
+
+            $scope.stopTimer = function () {
+                $interval.cancel($scope.status);
+                $scope.running = false;
+                ls.remove('currentTask');
+            };
         }
     }
 }]);

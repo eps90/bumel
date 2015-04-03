@@ -1,1 +1,8 @@
-<span class="timer-value" ng-show="value > 0">{{ value | realTime }}</span>
+<div layout="row" flex>
+    <span class="timer-value" ng-show="running">{{ value | realTime }}</span>
+    <section>
+        <md-button class="md-raised md-warn" ng-click="stopTimer()" ng-show="running">
+            Stop
+        </md-button>
+    </section>
+</div>
