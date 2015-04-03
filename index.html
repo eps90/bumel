@@ -16,20 +16,26 @@
         </div>
     </md-toolbar>
     <md-content class="md-padding">
-        <panel layout="column">
-            <form layout="row">
-                <md-input-container>
-                    <label>Task title</label>
-                    <input type="text" ng-model="taskName" />
-                </md-input-container>
-                <md-button class="md-fab md-primary" ng-click="startTimer(taskName)" ng-disabled="!taskName || running">
-                    <md-icon md-font-icon="fa fa-plus" class="button apply-task"></md-icon>
-                </md-button>
-            </form>
-            <div layout="row">
-                <timer interval="1000" name="my.timer"></timer>
-            </div>
-        </panel>
+        <md-card>
+            <md-card-content>
+                <h5>Please enter the name of your task and click <strong>Start</strong> to begin counting</h5>
+                <panel layout="column">
+                    <form>
+                        <md-input-container>
+                            <label>Task title</label>
+                            <input type="text" ng-model="taskName" />
+                        </md-input-container>
+                        <md-button class="md-primary md-raised" ng-click="startTimer(taskName)" ng-disabled="!taskName || running">
+                            Start
+                        </md-button>
+                    </form>
+                    <div>
+                        <timer interval="1000" name="my.timer"></timer>
+                    </div>
+                </panel>
+            </md-card-content>
+        </md-card>
+
 
     </md-content>
 
