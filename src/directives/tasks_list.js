@@ -12,6 +12,11 @@ app.directive('tasksList',['LocalStorageService', function (ls) {
             $scope.$on('timer.stop', function () {
                 $scope.tasksCompleted = ls.getItem('tasks.completed');
             });
+
+            $scope.clearList = function () {
+                ls.clear();
+                $scope.tasksCompleted = [];
+            }
         }
     }
 }]);

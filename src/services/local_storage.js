@@ -22,6 +22,9 @@ app.factory('LocalStorageService', ['$window', function ($window) {
         },
         remove: function (key) {
             $window.localStorage.removeItem(key);
+        },
+        clear: function () {
+            $window.localStorage.clear();
         }
     }
 }]);

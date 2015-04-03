@@ -11,3 +11,7 @@ timer span.timer-value {
 .task-item {
     padding: 16px;
 }
+
+.clear-list-button {
+    margin: 16px 16px 16px 0;
+}
