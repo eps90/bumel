@@ -14,6 +14,8 @@ app.directive('timer', ['LocalStorageService', '$interval', function (ls, $inter
         controller: function ($scope) {
             $scope.value = 0;
             $scope.status = undefined;
+            $scope.running = false;
+
             $scope.startTimer = function (taskName) {
                 var timerName = taskName + '.timer';
                 if (ls.isSet(timerName)) {
