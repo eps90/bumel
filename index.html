@@ -4,13 +4,39 @@
         <meta charset="UTF-8">
         <title>Nukomeet Bumel app</title>
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+        <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css"/>
+        <link rel="stylesheet" href="style/custom_style.css" />
     </head>
-    <body>
+    <body layout="column">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span>Nukomeet Bumel</span>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding" layout="column" layout-sm="column">
+        <panel layout="row">
+            <md-input-container>
+                <label>Task title</label>
+                <input type="text" ng-model="taskName" />
+            </md-input-container>
+            <md-button class="md-fab md-primary" ng-click="startTimer()" ng-disabled="!taskName">
+                <md-icon md-font-icon="fa fa-plus" class="button apply-task"></md-icon>
+            </md-button>
+            <timer interval="40" name="my.timer"></timer>
+        </panel>
+
+    </md-content>
 
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="bower_components/angular-material/angular-material.min.js"></script>
     <script src="src/app.js"></script>
+    <script src="src/services/local_storage.js"></script>
+    <script src="src/filters/real_time_filter.js"></script>
+    <script src="src/directives/panel.js"></script>
+    <script src="src/directives/timer.js"></script>
     </body>
 </html>
