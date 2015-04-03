@@ -1,13 +1,19 @@
 var app = angular.module('nukomeet.bumel');
 
-app.directive('panel', function () {
+app.directive('panel', ['LocalStorageService', function (ls) {
     return {
         restrict: 'E',
         transclude: true,
         template: '<div ng-transclude layout="row"></div>',
+        link: function (scope) {
+            if (ls.isSet('currentTask')) {
+                var taskName = ls.get('currentTask');
+                scope.taskName = ls.get(taskName + '.name');
+                scope.startTimer();
+            }
+        },
         controller: function ($scope) {
             $scope.taskName = '';
-
             $scope.timer = null;
             this.setTimer = function(timer) {
                 $scope.timer = timer;
@@ -18,8 +24,11 @@ app.directive('panel', function () {
                     .replace(/ /g,'-')
                     .replace(/[^\w-]+/g,'');
 
+                ls.setItem('currentTask', name);
+                ls.setItem(name + '.name', $scope.taskName);
+
                 $scope.timer.startTimer(name);
             };
         }
     }
-});
+}]);
