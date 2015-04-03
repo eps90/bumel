@@ -5,13 +5,6 @@ app.directive('panel', ['LocalStorageService', function (ls) {
         restrict: 'E',
         transclude: true,
         template: '<div ng-transclude layout="row"></div>',
-        link: function (scope) {
-            if (ls.isSet('currentTask')) {
-                var taskName = ls.get('currentTask');
-                scope.taskName = ls.get(taskName + '.name');
-                scope.startTimer();
-            }
-        },
         controller: function ($scope) {
             $scope.taskName = '';
             $scope.running = false;
@@ -30,6 +23,7 @@ app.directive('panel', ['LocalStorageService', function (ls) {
 
                 $scope.timer.startTimer(name);
                 $scope.running = true;
+                $scope.timer.running = true;
             };
         }
     }
