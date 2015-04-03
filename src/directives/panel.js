@@ -7,7 +7,6 @@ app.directive('panel', ['LocalStorageService', function (ls) {
         template: '<div ng-transclude layout="row"></div>',
         controller: function ($scope) {
             $scope.taskName = '';
-            $scope.running = false;
             $scope.timer = null;
             this.setTimer = function(timer) {
                 $scope.timer = timer;
@@ -22,8 +21,6 @@ app.directive('panel', ['LocalStorageService', function (ls) {
                 ls.setItem(name + '.name', taskName);
 
                 $scope.timer.startTimer(name);
-                $scope.running = true;
-                $scope.timer.running = true;
             };
         }
     }

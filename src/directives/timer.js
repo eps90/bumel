@@ -29,6 +29,7 @@ app.directive('timer', ['LocalStorageService', '$interval', function (ls, $inter
                     },
                     $scope.interval
                 );
+                $scope.running = true;
             };
 
             $scope.stopTimer = function () {
