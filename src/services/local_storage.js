@@ -19,6 +19,9 @@ app.factory('LocalStorageService', ['$window', function ($window) {
                     this.setItem(key, []);
                 }
             }
+        },
+        remove: function (key) {
+            $window.localStorage.removeItem(key);
         }
     }
 }]);
