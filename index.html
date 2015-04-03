@@ -22,7 +22,7 @@
                     <label>Task title</label>
                     <input type="text" ng-model="taskName" />
                 </md-input-container>
-                <md-button class="md-fab md-primary" ng-click="startTimer()" ng-disabled="!taskName || running">
+                <md-button class="md-fab md-primary" ng-click="startTimer(taskName)" ng-disabled="!taskName || running">
                     <md-icon md-font-icon="fa fa-plus" class="button apply-task"></md-icon>
                 </md-button>
             </form>

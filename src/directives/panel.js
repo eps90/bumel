@@ -20,13 +20,13 @@ app.directive('panel', ['LocalStorageService', function (ls) {
                 $scope.timer = timer;
             };
 
-            $scope.startTimer = function () {
-                var name = $scope.taskName.toLowerCase()
+            $scope.startTimer = function (taskName) {
+                var name = taskName.toLowerCase()
                     .replace(/ /g,'-')
                     .replace(/[^\w-]+/g,'');
 
                 ls.setItem('currentTask', name);
-                ls.setItem(name + '.name', $scope.taskName);
+                ls.setItem(name + '.name', taskName);
 
                 $scope.timer.startTimer(name);
                 $scope.running = true;
